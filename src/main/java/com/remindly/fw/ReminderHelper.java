@@ -96,5 +96,60 @@ driver.findElement(By.id("month_text_view")).getText();
     public String getSelectedYear(){
         return driver.findElement(By.id("date_picker_year")).getText();
     }
-}
+    public void tapOnOk() {
+        tap(By.id("ok"));
+    }
 
+    public void tapOnTimeField() {
+        tap(By.id("time"));
+    }
+
+    public void selectTime(String timeOfDay, int xHour, int yHour, int xMin, int yMin) {
+
+        pause(500);
+        if (timeOfDay.equals("am")) {
+            tapWithCoordinates(279,1318);
+        } else if (timeOfDay.equals("pm")) {
+            tapWithCoordinates(789,1318);
+        }
+        tapWithCoordinates(xHour,yHour);
+        tapWithCoordinates(xMin,yMin);
+    }
+
+    public void repeatOff() {
+        tap(By.id("repeat_switch"));
+    }
+    public void tapOnRepetitionIntervalField() {
+        tap(By.id("RepeatNo"));
+    }
+
+    public void enterNumber(String repeat) {
+        pause(500);
+        type(By.className("android.widget.EditText"),repeat);
+        tap(By.xpath("//*[@text='OK']"));
+    }
+
+    public void selectTypeOfRepetition(String typeRep) {
+        tap(By.xpath("//*[@text='" + typeRep + "']"));
+    }
+
+    public void tapOnRepetitionField() {
+        tap(By.id("RepeatType"));
+    }
+
+    public void saveReminder() {
+        tap(By.id("save_reminder"));
+    }
+
+    public String isRepeatOffTextPresent() {
+        return driver.findElement(By.id("repeat_switch")).getText();
+    }
+
+    public String isRepeatIntervalTextPresent() {
+        return driver.findElement(By.id("set_repeat_no")).getText();
+    }
+
+    public String isRepetitionTypeTextPresent() {
+        return driver.findElement(By.id("set_repeat_type")).getText();
+    }
+}

@@ -1,6 +1,8 @@
 package com.remindly.fw;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 
 public class BaseHelper {
@@ -33,5 +35,9 @@ public class BaseHelper {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+    public void tapWithCoordinates(int x, int y) {
+        new TouchAction(driver).tap(PointOption.point(x,y))
+                .release().perform();
     }
 }

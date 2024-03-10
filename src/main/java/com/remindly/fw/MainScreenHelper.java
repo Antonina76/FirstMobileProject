@@ -15,4 +15,8 @@ public class MainScreenHelper extends BaseHelper{
     public void taOnAddReminder() {
         tap(By.id("add_reminder"));
     }
+    public String isReminderTitlePresent() {
+        String text = driver.findElement(By.id("recycle_title")).getText();
+        return text;
+    }
 }
